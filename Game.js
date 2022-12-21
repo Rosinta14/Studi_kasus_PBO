@@ -1,7 +1,7 @@
 let score = 0;
 let a;
 let screen = 0;
-let counter = setInterval(timer, 1000);
+let counter = setInterval(time, 1000);
 
 function setup(){
   createCanvas(600,600);
@@ -50,6 +50,11 @@ class Map {
     }
   
     init() {
+       noStroke();
+       fill('#34ff1e');
+       rect(0, 310, this.width, this.height - 390);
+       fill('#ab5800');
+       rect(0, 320, this.width, this.height - 200);
 
     }
 
