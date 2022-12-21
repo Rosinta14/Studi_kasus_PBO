@@ -134,24 +134,67 @@ class Monster extends Entity{
   }     
 
 
-class Hero extends Entity {
-    constructor(life, score) {
-      this.life = life;
-      this.score = score;
+class Hero extends Entity{
+    constructor(height, width, x, y, life, score, jumpCount = 9){
+        super(height, width, x, y);
+        this.life = life;
+        this.score = score;
+        this.jumpCount = jumpCount;
+        this.jumped = false;
     }
-  
-    
-    increaseScore() {
-
+    player(choose){
+        noStroke();
+        fill(choose);
+        rect(this.x, this.y, this.width, this.height);
+    }
+    move(){
+        if(keyIsDown(68)){
+            this.moveRight();
+        }
+        else if(keyIsDown(65)){
+            this.moveLeft();
+        }
+        else if(keyIsDown(83)){
+            this.moveDown();
+        }
+        else if(keyIsDown(87)){
+            this.moveUp();
+        }
+    }
+    jump(){
+        let neg;
+        if (!this.jumped){
+            if(keyIsDown(32)){
+                this.jumped = true;
+            }
+        }
+        else {
+            if(this.jumpCount >= -9){
+                neg = 0.5;
+                if(this.jumpCount < 0){
+                    neg = -0.5;
+                }
+                this.y -= (this.jumpCount ** 2) * 0.2 * neg;
+                this.jumpCount -= 0.5;
+            }
+            else {
+                this.jumped = false;
+                this.jumpCount = 9;
+          }
+        }
+        rect(this.x, this.y, this.width, this.height);
     }
 
-  
+    increaseScore(){
+        
+    }
+
     calculateLife(){
 
     }
 
-
     saveScore(){
-
+        fill(0);
+        text('Score : ' + this.score, 40, 30);
     }
-  }
+}
