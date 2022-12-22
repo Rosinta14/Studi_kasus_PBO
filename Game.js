@@ -2,8 +2,8 @@ let a;
 
 function setup(){
   createCanvas(400, 400);
-  p = new Entity(20,100,100,color(78,178,78),1);
-  p.show();
+  a = new Entity(20,100,100,color(78,178,78),1);
+  a.show();
 }
 
 function draw(){
@@ -27,11 +27,7 @@ class Map {
     }
   
     init() {
-       noStroke();
-       fill('#34ff1e');
-       rect(0, 310, this.width, this.height - 390);
-       fill('#ab5800');
-       rect(0, 320, this.width, this.height - 200);
+       createCanvas(this.width,this.heigth)
 
     }
 
@@ -48,14 +44,19 @@ class Level {
       this.maxLevel = maxLevel;
     }
   
+    showLevel(){
+      fill('#FFFFFF');
+      text('Level:' + this.currentLevel,15,40)
+    }
+  
 
     setLevel() {
-      
+      this.currentLevel = this.currentLevel
     }
   
  
-    getCurrentLevel() {  
-
+    getCurrentLevel() {
+      return this.currentLevel
     }
   }
 
@@ -69,12 +70,12 @@ class Entity{
         this.v=v;     
     }
   
-  show(){
-    background(20);
-    fill(this.warna);
-    noStroke()
-    ellipse(this.posX, this.posY, this.width,this.hight);
-  }
+    show(){
+      background(20);
+      fill(this.warna);
+      noStroke()
+      ellipse(this.posX, this.posY, this.width,this.hight);
+    }
 
     attack(){
     }
@@ -134,15 +135,15 @@ class Hero extends Entity{
     move(){
     if (keyIsPressed === true) {
       if (keyCode === UP_ARROW) {
-      a.moveUp();
-    } else if (keyCode === DOWN_ARROW) {
-      a.moveDown();
-    } else if (keyCode === LEFT_ARROW) {
-      a.moveLeft();
-    } else if (keyCode === RIGHT_ARROW) {
-      a.moveRight();
-    }
-        
+          a.moveUp();
+        } else if (keyCode === DOWN_ARROW) {
+          a.moveDown();
+        } else if (keyCode === LEFT_ARROW) {
+          a.moveLeft();
+        } else if (keyCode === RIGHT_ARROW) {
+          a.moveRight();
+        }
+      }  
     }
     
     increaseScore(){
