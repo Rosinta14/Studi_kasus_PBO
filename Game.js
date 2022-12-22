@@ -65,38 +65,51 @@ class Level {
   }
 
 class Entity{
-    Constructor(height, width, x,y){
+    Constructor(height, width, posX, posY, warna,v){
         this.width= width;
         this.height=height;
-        this.x=x;
-        this.y=y;     
+        this.posX=posX;
+        this.posY=posY;
+        this.warna=warna;
+        this.v=v;     
     }
+  
+  show(){
+    background(20);
+    fill(this.warna);
+    noStroke()
+    ellipse(this.posX, this.posY, this.width,this.hight);
+  }
 
     attack(){
     }
 
     moveRight(){
-      if(keyIsDown(68)){
-            this.x += 1
-        }
+      if (this.posX+this.v>400)
+        this.posX=0;
+      else
+        this.posX+=this.v;
     }
 
     moveLeft(){
-      if(keyIsDown(65)){
-            this.x -= 1
-        }
+      if (this.posX-this.v<0)
+        this.posX=400;
+      else
+        this.posX-=this.v;
     }
 
     moveDown(){
-       if(keyIsDown(87)){
-            this.y += 1
-        }
+      if (this.posY+this.v>400)
+        this.posY=0;
+      else
+        this.posY+=this.v;
     }
 
     moveUp(){
-      if(keyIsDown(87)){
-            this.x += 1
-        }
+      if (this.posY-this.v<0)
+        this.posY=400;
+      else
+        this.posY-=this.v;
     }        
 }
  
@@ -124,18 +137,7 @@ class Hero extends Entity{
     }
     
     move(){
-        if(keyIsDown(68)){
-            this.moveRight();
-        }
-        else if(keyIsDown(65)){
-            this.moveLeft();
-        }
-        else if(keyIsDown(83)){
-            this.moveDown();
-        }
-        else if(keyIsDown(87)){
-            this.moveUp();
-        }
+        
     }
     
     increaseScore(){
