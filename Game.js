@@ -1,28 +1,16 @@
-let score = 0;
-let screen = 0;
-let counter = setInterval(time, 1000);
+let a;
 
 function setup(){
-  createCanvas(600,600);
-  let a = new Game(300,300,40);
-  textAlign(CENTER);
-  textSize(20);
+  createCanvas(400, 400);
+  p = new Entity(20,100,100,color(78,178,78),1);
+  p.show();
 }
 
 function draw(){
   
 }
 
-class Game{
-  constructor(x, y, sizeBola, score = 0, time = 5){
-    this.x = y;
-    this.y = y;
-    this.sizeBola = sizeBola;
-    this.score = score;
-    this.time = time;
-  }
-  
-}
+
 
 class Map {
     constructor(width, height) {
@@ -137,6 +125,16 @@ class Hero extends Entity{
     }
     
     move(){
+    if (keyIsPressed === true) {
+      if (keyCode === UP_ARROW) {
+      a.moveUp();
+    } else if (keyCode === DOWN_ARROW) {
+      a.moveDown();
+    } else if (keyCode === LEFT_ARROW) {
+      a.moveLeft();
+    } else if (keyCode === RIGHT_ARROW) {
+      a.moveRight();
+    }
         
     }
     
