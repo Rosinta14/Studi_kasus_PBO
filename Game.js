@@ -7,6 +7,13 @@ function setup(){
 }
 
 function draw(){
+    if (keyIsPressed === true) {
+    a.attack();
+    a.moveRight();
+    a.moveLeft();
+    a.moveDown();
+    a.moveUp();
+  }
   
 }
 
