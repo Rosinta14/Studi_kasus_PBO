@@ -1,11 +1,10 @@
 let score = 0;
-let a;
 let screen = 0;
 let counter = setInterval(time, 1000);
 
 function setup(){
   createCanvas(600,600);
-  a = new Game(300,300,40);
+  let a = new Game(300,300,40);
   textAlign(CENTER);
   textSize(20);
 }
@@ -17,7 +16,7 @@ function draw(){
     a.time = 5;
   }else if (screen === 1){
     background(0);
-    c.Bola();
+    a.Bola();
     text(("Score : " + a.score),width/2, 40);
     
     if(c.time>0){
