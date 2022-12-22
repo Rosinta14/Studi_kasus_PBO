@@ -10,24 +10,7 @@ function setup(){
 }
 
 function draw(){
-  if (screen === 0){
-    a.score = 0;
-    a.Start();
-    a.time = 5;
-  }else if (screen === 1){
-    background(0);
-    a.Bola();
-    text(("Score : " + a.score),width/2, 40);
-    
-    if(c.time>0){
-      text(a.time + " seconds", 100, 40);
-    }else{
-      screen = 2;
-      a.time = 5;
-    }
-  }else if(screen === 2){
-    a.GameOver();
-  }
+  
 }
 
 class Game{
@@ -134,18 +117,12 @@ class Monster extends Entity{
 
 
 class Hero extends Entity{
-    constructor(height, width, x, y, life, score, jumpCount = 9){
+    constructor(height, width, x, y, life, score){
         super(height, width, x, y);
         this.life = life;
         this.score = score;
-        this.jumpCount = jumpCount;
-        this.jumped = false;
     }
-    player(choose){
-        noStroke();
-        fill(choose);
-        rect(this.x, this.y, this.width, this.height);
-    }
+    
     move(){
         if(keyIsDown(68)){
             this.moveRight();
@@ -160,30 +137,7 @@ class Hero extends Entity{
             this.moveUp();
         }
     }
-    jump(){
-        let neg;
-        if (!this.jumped){
-            if(keyIsDown(32)){
-                this.jumped = true;
-            }
-        }
-        else {
-            if(this.jumpCount >= -9){
-                neg = 0.5;
-                if(this.jumpCount < 0){
-                    neg = -0.5;
-                }
-                this.y -= (this.jumpCount ** 2) * 0.2 * neg;
-                this.jumpCount -= 0.5;
-            }
-            else {
-                this.jumped = false;
-                this.jumpCount = 9;
-          }
-        }
-        rect(this.x, this.y, this.width, this.height);
-    }
-
+    
     increaseScore(){
         
     }
